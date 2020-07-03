@@ -1,4 +1,4 @@
-package algo.leetcode;
+package algo.leetcode.tree;
 
 import java.util.ArrayDeque;
 import java.util.List;
