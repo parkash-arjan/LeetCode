@@ -3,83 +3,84 @@ package algo.leetcode;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BinaryTreeLevelOrderTraversalFromBottom {
 
-//	public List<List<Integer>> levelOrderBottom(TreeNode root) {
-//
-//		Deque<TreeNode> queue = new LinkedList<>();
-//		Deque<List<Integer>> stack = new ArrayDeque<>();
-//
-//		if (root != null) {
-//
-//			queue.add(root);
-//			int level = 1;
-//
-//			while (!queue.isEmpty()) {
-//
-//				int nodesToProcess = (int) Math.pow(2.0, level - 1.0);
-//
-//				level++;
-//				List<Integer> tempList = new ArrayList<>();
-//				for (int i = 0; i < nodesToProcess; i++) {
-//					TreeNode node = queue.poll();
-//					if (node != null) {
-//						tempList.add(node.val);
-//						queue.add(node.left);
-//						queue.add(node.right);
-//					}else {
-//						queue.add(null);
-//						queue.add(null);
-//					}
-//				}
-//
-//				if (!tempList.isEmpty())
-//					stack.push(tempList);
-//			}
-//
-//		}
-//		List<List<Integer>> result = new ArrayList<>();
-//		while (!stack.isEmpty())
-//			result.add(stack.pop());
-//		return result;
-//	}
-
 	public List<List<Integer>> levelOrderBottom(TreeNode root) {
 
-		Deque<TreeNode> queue = new ArrayDeque<>();
+		Deque<TreeNode> queue = new LinkedList<>();
 		Deque<List<Integer>> stack = new ArrayDeque<>();
+
 		if (root != null) {
+
 			queue.add(root);
+			int level = 1;
+
 			while (!queue.isEmpty()) {
 
-				List<TreeNode> list = new ArrayList<>();
+				int nodesToProcess = (int) Math.pow(2.0, level - 1.0);
 
-				while (!queue.isEmpty()) {
-					TreeNode tempNode = queue.poll();
-					if (tempNode != null)
-						list.add(tempNode);
-				}
-
-				List<Integer> intList = new ArrayList<>();
-				for (TreeNode node : list) {
-					intList.add(node.val);
-					if (node.left != null)
+				level++;
+				List<Integer> tempList = new ArrayList<>();
+				for (int i = 0; i < nodesToProcess; i++) {
+					TreeNode node = queue.poll();
+					if (node != null) {
+						tempList.add(node.val);
 						queue.add(node.left);
-					if (node.right != null)
 						queue.add(node.right);
+					}else {
+						queue.add(null);
+						queue.add(null);
+					}
 				}
 
-				stack.push(intList);
+				if (!tempList.isEmpty())
+					stack.push(tempList);
 			}
-		}
 
+		}
 		List<List<Integer>> result = new ArrayList<>();
 		while (!stack.isEmpty())
 			result.add(stack.pop());
 		return result;
 	}
+
+//	public List<List<Integer>> levelOrderBottom(TreeNode root) {
+//
+//		Deque<TreeNode> queue = new ArrayDeque<>();
+//		Deque<List<Integer>> stack = new ArrayDeque<>();
+//		if (root != null) {
+//			queue.add(root);
+//			while (!queue.isEmpty()) {
+//
+//				List<TreeNode> list = new ArrayList<>();
+//
+//				while (!queue.isEmpty()) {
+//					TreeNode tempNode = queue.poll();
+//					if (tempNode != null)
+//						list.add(tempNode);
+//				}
+//
+//				List<Integer> intList = new ArrayList<>();
+//				for (TreeNode node : list) {
+//					intList.add(node.val);
+//					if (node.left != null)
+//						queue.add(node.left);
+//					if (node.right != null)
+//						queue.add(node.right);
+//				}
+//
+//				stack.push(intList);
+//			}
+//		}
+//
+//		List<List<Integer>> result = new ArrayList<>();
+//		while (!stack.isEmpty())
+//			result.add(stack.pop());
+//		return result;
+//	}
 
 	public static void main(String[] args) {
 
