@@ -17,4 +17,10 @@ public class TreeNode {
 		this.left = left;
 		this.right = right;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("TreeNode [val=%s, left=%s, right=%s]", val, left, right);
+	}
+
 }
