@@ -5,33 +5,12 @@ public class OddEvenLinkedList {
 	public static void main(String[] args) {
 
 		OddEvenLinkedList oddEvenLinkedList = new OddEvenLinkedList();
-		ListNode one = new ListNode(1);
-		ListNode two = new ListNode(2);
-		ListNode three = new ListNode(3);
-		ListNode four = new ListNode(4);
-		ListNode five = new ListNode(5);
-		ListNode six = new ListNode(6);
+		ListNode head = LinkedListUtil.getLinkedList();
 
-		one.next = two;
-		two.next = three;
-		three.next = four;
-		four.next = five;
-		five.next = six;
+		LinkedListUtil.print(head);
+		ListNode oddEvenList = oddEvenLinkedList.oddEvenList(head);
+		LinkedListUtil.print(oddEvenList);
 
-		oddEvenLinkedList.print(one);
-		ListNode oddEvenList = oddEvenLinkedList.oddEvenList(one);
-		oddEvenLinkedList.print(oddEvenList);
-
-	}
-
-	public void print(ListNode head) {
-
-		while (head != null) {
-			System.out.println(head.val);
-			head = head.next;
-		}
-
-		System.out.println();
 	}
 
 	public ListNode oddEvenList(ListNode head) {
