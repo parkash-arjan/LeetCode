@@ -23,6 +23,19 @@ public class LinkedListUtil {
 		return one;
 	}
 
+	public static ListNode getLinkedList(int numOfNodes) {
+
+		ListNode head = new ListNode(-1);
+		ListNode result = head;
+
+		for (int i = 1; i <= numOfNodes; i++) {
+			head.next = new ListNode(i);
+			head = head.next;
+		}
+
+		return result.next;
+	}
+
 	public static void print(ListNode head) {
 
 		while (head != null) {
