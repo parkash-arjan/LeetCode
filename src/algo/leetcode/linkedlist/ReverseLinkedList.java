@@ -11,9 +11,9 @@ public class ReverseLinkedList {
 		ListNode head = LinkedListUtil.getLinkedList(3);
 		LinkedListUtil.print(head);
 
-		//ListNode reverse = reverser.reverseRecursive(head);
+		// ListNode reverse = reverser.reverseRecursive(head);
 		ListNode reverse = reverser.reverseRecursive_v2(head);
-		
+
 		LinkedListUtil.print(reverse);
 
 	}
@@ -80,6 +80,31 @@ public class ReverseLinkedList {
 			node.next = null;
 		}
 		return newHeadNode.next;
+	}
+
+	public ListNode reverseIterative(ListNode head) {
+		
+		if (head == null || head.next == null) {
+			return head;
+		}
+
+		ListNode previous = null;
+		ListNode current = head;
+		ListNode next = current;
+
+		// N ←1 	←		2	←    3←		4		    Null
+		// 														↑c
+		// 														↑n
+		// 											↑p
+		while (current != null) {
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+
+		}
+
+		return previous;
 	}
 
 	public void printReverse(ListNode head) {
