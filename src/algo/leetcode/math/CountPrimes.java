@@ -22,10 +22,9 @@ public class CountPrimes {
 				map.put(i, true);
 			}
 		}
-		System.out.println("Map size = " + map.size());
-		int k = 0;
+
 		for (Map.Entry<Integer, Boolean> entry : map.entrySet()) {
-			k++;
+
 			int key = entry.getKey();
 
 			if (Math.pow(key, 2.0) >= n) {
@@ -39,7 +38,8 @@ public class CountPrimes {
 			}
 
 		}
-		System.out.println("K = " + k);
+
+		System.out.println(map.keySet());
 		return map.size();
 	}
 }
