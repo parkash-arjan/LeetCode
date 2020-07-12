@@ -1,6 +1,6 @@
 package algo.leetcode.tree;
 
-public class TreeTraversal {
+public class TreeInoderTraversal {
 
 	public static void main(String[] args) {
 
