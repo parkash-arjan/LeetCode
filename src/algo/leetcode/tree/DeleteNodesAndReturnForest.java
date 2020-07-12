@@ -1,6 +1,7 @@
 package algo.leetcode.tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +27,12 @@ public class DeleteNodesAndReturnForest {
 		if (root == null) {
 			return forest;
 		}
-		Set<Integer> set = new HashSet<>(IntStream.of(toDelete).boxed().collect(Collectors.toList()));
+		// Set<Integer> set = new
+		// HashSet<>(IntStream.of(toDelete).boxed().collect(Collectors.toList()));
+		Set<Integer> set = new HashSet<>();
+		for (int i : toDelete) {
+			set.add(i);
+		}
 
 		postOrderProcessingRefactor(root, set, forest);
 
@@ -138,4 +144,64 @@ public class DeleteNodesAndReturnForest {
 		}
 
 	}
+
+	public List<TreeNode> delNodesV2(TreeNode root, int[] toDelete) {
+		List<TreeNode> forest = new ArrayList<>();
+		if (root == null) {
+			return forest;
+		}
+
+		Set<Integer> set = new HashSet<>();
+
+		for (int i : toDelete) {
+			set.add(i);
+		}
+
+		postOrderProcessingRefactorV4(root, set, forest);
+
+		if (!set.contains(root.val)) {
+			forest.add(root);
+		} else {
+			addTreeToForeset(root, forest);
+		}
+		return forest;
+	}
+
+	private static void postOrderProcessingRefactorV4(TreeNode root, Set<Integer> setToDelete, List<TreeNode> forest) {
+
+		if (root == null) {
+			return;
+		}
+
+		postOrderProcessingRefactorV4(root.left, setToDelete, forest);
+		postOrderProcessingRefactorV4(root.right, setToDelete, forest);
+
+		deleteNode(root, setToDelete, forest); // delete if child node has values in delete set.
+
+	}
+
+	private static void deleteNode(TreeNode root, Set<Integer> setToDelete, List<TreeNode> forest) {
+
+		if (root.left != null && setToDelete.contains(root.left.val)) {
+			addTreeToForeset(root.left, forest);
+			root.left = null;
+		}
+
+		if (root.right != null && setToDelete.contains(root.right.val)) {
+			addTreeToForeset(root.right, forest);
+			root.right = null;
+		}
+	}
+
+	private static void addTreeToForeset(TreeNode root, List<TreeNode> forest) {
+
+		if (root.left != null) {
+			forest.add(root.left);
+		}
+
+		if (root.right != null) {
+			forest.add(root.right);
+		}
+	}
+
 }
