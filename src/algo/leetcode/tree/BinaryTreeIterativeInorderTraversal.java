@@ -11,7 +11,7 @@ public class BinaryTreeIterativeInorderTraversal {
 
 		BinaryTreeIterativeInorderTraversal traversal = new BinaryTreeIterativeInorderTraversal();
 
-		TreeNode root = TreeUtil.getBSTSample1();
+		TreeNode root = TreeUtil.getBSTSample2();
 		List<Integer> inorderTraversal = traversal.inorderTraversal(root);
 		System.out.println(inorderTraversal);
 	}
