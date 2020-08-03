@@ -3,7 +3,7 @@ package algo.leetcode.dp;
 public class ClimbingStairs {
 
 	public static void main(String[] args) {
-		System.out.println(climbStairs(6));
+		System.out.println(climbStairs(7));
 	}
 
 	public static int climbStairs(int n) {
