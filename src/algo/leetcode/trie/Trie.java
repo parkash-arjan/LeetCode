@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class Trie {
 
-	public char value;
-	public Map<Character, Trie> childs;
+	private char value;
+	private Map<Character, Trie> childs;
 
 	public static void main(String[] args) {
 		Trie trie = new Trie();
 		trie.insert("apple");
-		System.out.println(trie.search("apple"));
+		trie.insert("app");
+		System.out.println(trie.search("app"));
 	}
 
-	/** Initialize your data structure here. */
 	public Trie() {
 		value = '/'; // root node
 		childs = new HashMap<>();
@@ -25,14 +25,13 @@ public class Trie {
 		childs = new HashMap<>();
 	}
 
-	/** Inserts a word into the trie. */
 	public void insert(String word) {
 
 		if (word == null || word.length() == 0) {
 			return;
 		}
 		insertHelper(new StringBuilder(word), this);
-		// System.out.println(childs);
+
 	}
 
 	private void insertHelper(StringBuilder word, Trie root) {
@@ -52,7 +51,6 @@ public class Trie {
 
 	}
 
-	/** Returns if the word is in the trie. */
 	private boolean isFound = false;
 
 	public boolean search(String word) {
@@ -82,9 +80,6 @@ public class Trie {
 
 	}
 
-	/**
-	 * Returns if there is any word in the trie that starts with the given prefix.
-	 */
 	public boolean startsWith(String prefix) {
 		return false;
 	}
